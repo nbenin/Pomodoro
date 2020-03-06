@@ -79,7 +79,7 @@ AGENT LINE 1
 
 	- Logged in as AGENTLINE1
 
-	- should see the whole pool of all unclaimed tickets but only titles
+	- should see the whole pool of all unclaimed tickets but only titles ordered by priority and then time
 
 	- click to see the message, and show button to claim
 
@@ -94,7 +94,7 @@ AGENT LINE 2
 
 	- Logged in as AGENTLINE2
 
-	- see pool of unclaimed escalated tickets
+	- see pool of unclaimed escalated tickets ordered by priority then time
 
 	- click to see original message, show claim button
 
