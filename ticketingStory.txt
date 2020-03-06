@@ -104,21 +104,22 @@ MANAGER
 
 	- Logged in as MANAGER
 
-	- can see every ticket with ability to escalate/close
+	- can see every ticket with ability to prioritize/close
 
-	- has ability to set priority of tickets
-
-	- can mark tickets as won't fix, considered closed   (has a box to enter a reason why its "wont fix"
+	- can mark tickets as won't fix, considered closed   (has a box to enter a reason why its "wont fix") cant be repoened
 
 	- Sees list of all agents and statistics (#open tickets, #closed tickets, #reopened tickets, % of succesful tickets)
 
-	- ability to unclaim an agent's tickets
+	- ability to unclaim all agent's tickets
 
 	- can change type of agent (line 1 to line 2)
+
+	- can delete agents
 
 	- can create new agents, sends email when agent created with link to forgot password and instructions how to set
 
  
+		WITH EVERY COMMENT/ACTION SEND MAIN TO USER EXCEPT FOR PRIVATE COMMENTS
 
 
 
