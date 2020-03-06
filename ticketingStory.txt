@@ -1,0 +1,149 @@
+GUEST
+
+	
+	- Arrive at website see a login form, below is a link for "forgot your password" or "register".
+	
+	- Im a new user, click on registration and go to registration page
+	
+	- need to enter a First name, Last name, valid Email, and the same password twice, and security question.
+
+	- password needs length of 6, a number, and at least 1 capital
+
+	- If successfully registered, send email to user and, return to login page and log in
+	
+
+	
+	- I forgot my password
+
+	- Go to password recover page and ask for email
+
+	- Need to answer security question
+
+	- If all correct go to password update page
+
+	- On update page, enter new password twice and if the same, update the database
+
+	- back to login page
+
+	
+	- I am existing user
+
+	- Enter login information, if correct go to Customer Homepage
+
+
+							
+							USER TABLE
+
+	ID(primaryKey)(ForeignKey-to-Tickets) || First Name || Last Name || Email || Password || Security Question || ROLE || Time Stamp
+
+
+
+
+CUSTOMER
+
+	- logged in as CUSTOMER
+
+	- On customer homepage you can see open tickets and their statuses
+
+	- Logout button
+
+	- color coded tickets, if green, waiting for agent feedback, if yellow waiting for customer feedback
+
+	- Can create new tickets, when submitted, add to DB and update homepage
+
+	- Can see tickets that have been closed for less than an hour and ability to recover
+
+	- If you click on a ticket, see detailed ticket info and message history
+
+	- Have a submit box at the bottom where the customer can respond to the last message
+
+	- If properly submitted, change ticket status to "in progress" and redirect to homepage
+
+
+
+							TICKETS TABLE
+
+     ID(primaryKey)(ForeignKey-to-messaging and agent || Title || Content || Status || UserID(ForeignKey-to-User) || Proirity || Time Stamp
+
+							
+
+	- Click on a ticket and see message history
+							
+							MESSAGING TABLE
+
+			Id(primary Key) || TicketID(foreignkey-to-ticket) || AgentID || Message || Time Stamp
+
+
+
+AGENT LINE 1
+
+	- Logged in as AGENTLINE1
+
+	- should see the whole pool of all unclaimed tickets but only titles
+
+	- click to see the message, and show button to claim
+
+	- under the tickets that he has specifically claimed
+
+	- can click on own tickets and goes to message history, option to respond or close if solved
+
+	- can escalate ticket if not able to solve
+
+
+AGENT LINE 2
+
+	- Logged in as AGENTLINE2
+
+	- see pool of unclaimed escalated tickets
+
+	- click to see original message, show claim button
+
+	- show list of claimed tickets, when clicked go to message history with ability to respond or close
+
+MANAGER 
+
+	- Logged in as MANAGER
+
+	- can see every ticket with ability to escalate/close
+
+	- has ability to set priority of tickets
+
+	- can mark tickets as won't fix, considered closed   (has a box to enter a reason why its "wont fix"
+
+	- Sees list of all agents and statistics (#open tickets, #closed tickets, #reopened tickets, % of succesful tickets)
+
+	- ability to unclaim an agent's tickets
+
+	- can change type of agent (line 1 to line 2)
+
+	- can create new agents, sends email when agent created with link to forgot password and instructions how to set
+
+ 
+
+
+
+
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="62e5d8c0-9152-4d86-9c41-21e03499b982" name="pomodoro" url="http://pomodoro.local">
+        <fileTransfer port="0" mountedRoot="$PROJECT_DIR$/public" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>
