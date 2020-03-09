@@ -45,14 +45,14 @@ class Ticket
     private $status;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="integer")
      */
     private $priority;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $timestamp;
+    private $time;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Message", mappedBy="ticketid")
@@ -134,21 +134,21 @@ class Ticket
         return $this->priority;
     }
 
-    public function setPriority(?int $priority): self
+    public function setPriority(int $priority): self
     {
         $this->priority = $priority;
 
         return $this;
     }
 
-    public function getTimestamp(): ?\DateTimeInterface
+    public function getTime(): ?\DateTimeInterface
     {
-        return $this->timestamp;
+        return $this->time;
     }
 
-    public function setTimestamp(\DateTimeInterface $timestamp): self
+    public function setTime(\DateTimeInterface $time): self
     {
-        $this->timestamp = $timestamp;
+        $this->time = $time;
 
         return $this;
     }

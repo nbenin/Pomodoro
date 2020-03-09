@@ -29,14 +29,14 @@ class Message
     private $userid;
 
     /**
-     * @ORM\Column(type="string", length=1020)
+     * @ORM\Column(type="text")
      */
     private $content;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $timestamp;
+    private $time;
 
     public function getId(): ?int
     {
@@ -79,14 +79,14 @@ class Message
         return $this;
     }
 
-    public function getTimestamp(): ?\DateTimeInterface
+    public function getTime(): ?\DateTimeInterface
     {
-        return $this->timestamp;
+        return $this->time;
     }
 
-    public function setTimestamp(\DateTimeInterface $timestamp): self
+    public function setTime(\DateTimeInterface $time): self
     {
-        $this->timestamp = $timestamp;
+        $this->time = $time;
 
         return $this;
     }
