@@ -1,7 +1,11 @@
 {% extends 'base.html.twig' %}
 {% block title %}Log in!{% endblock %}
- {% block stylesheets %}<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" type="text/css"
-                               rel="stylesheet"/>{% endblock %}
+  {% block stylesheets %}
+  <style>form{
+          margin-left:30%;
+          margin-top:5%;
+      }</style>
+  {% endblock %}
 {% block body %}
 <form method="post">
     {% if error %}
@@ -9,7 +13,7 @@
     {% endif %}
 
     {% if app.user %}
-        <div class="mb-3">
+        <div class="mb-3">s
             You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
         </div>
     {% endif %}
