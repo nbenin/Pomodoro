@@ -79,7 +79,6 @@ class PomodoroUserAuthenticator extends AbstractFormLoginAuthenticator implement
     {
         return $this->passwordEncoder->isPasswordValid($user, $credentials['password']);
     }
-
     /**
      * Used to upgrade (rehash) the user's password automatically over time.
      */
@@ -94,8 +93,22 @@ class PomodoroUserAuthenticator extends AbstractFormLoginAuthenticator implement
             return new RedirectResponse($targetPath);
         }
 
-        // For example : return new RedirectResponse($this->urlGenerator->generate('some_route'));
-        throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
+        // hier het pad nog invullen maar dat hangt af van het soort user, de role dus
+        $user=$token->getUser()->getRoles();
+        if($user[0]=='ROLE_USER'){
+            return new RedirectResponse($this->urlGenerator->generate('customer'));
+        } elseif($user[0]=='ROLE_MANAGER'){
+            return new RedirectResponse($this->urlGenerator->generate('manager'));
+        } elseif($user[0]=='ROLE_AGENT'){
+            return new RedirectResponse($this->urlGenerator->generate('agents'));
+        } elseif($user[0]=='ROLE_AGENT_TWO'){
+            return new RedirectResponse($this->urlGenerator->generate('agents'));
+    }
+
+
+          return new RedirectResponse($this->urlGenerator->generate('login'));
+        // throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
+
     }
 
     protected function getLoginUrl()
