@@ -95,7 +95,7 @@ class PomodoroUserAuthenticator extends AbstractFormLoginAuthenticator implement
         }
         // hier het pad nog invullen maar dat hangt af van het soort user, de role dus
           return new RedirectResponse($this->urlGenerator->generate('customer'));
-       // throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
+        // throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
 
     protected function getLoginUrl()
