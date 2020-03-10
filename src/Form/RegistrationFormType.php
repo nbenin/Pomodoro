@@ -41,10 +41,6 @@ class RegistrationFormType extends AbstractType
             ->add('question', \Symfony\Component\Form\Extension\Core\Type\TextType::class, [
                 'label' => 'What is your Favourite Colour?'
             ])
-            ->add('time', DateType::class, [
-                'widget' => 'choice',
-                'input'  => 'datetime_immutable'
-            ])
         ;
     }
 
