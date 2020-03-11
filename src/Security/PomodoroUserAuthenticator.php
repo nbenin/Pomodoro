@@ -6,6 +6,7 @@ use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -93,7 +94,11 @@ class PomodoroUserAuthenticator extends AbstractFormLoginAuthenticator implement
             return new RedirectResponse($targetPath);
         }
 
+        //set session
+        $session=new Session();
+        $session->set('email', $token->getUser()->getEmail()); // still don't understand the TokenInterface $token
         // hier het pad nog invullen maar dat hangt af van het soort user, de role dus
+
         $user=$token->getUser()->getRoles();
         if($user[0]=='ROLE_USER'){
             return new RedirectResponse($this->urlGenerator->generate('customer'));
@@ -104,13 +109,9 @@ class PomodoroUserAuthenticator extends AbstractFormLoginAuthenticator implement
         } elseif($user[0]=='ROLE_AGENT_TWO'){
             return new RedirectResponse($this->urlGenerator->generate('agents'));
     }
-
-
           return new RedirectResponse($this->urlGenerator->generate('login'));
         // throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
-
     }
-
     protected function getLoginUrl()
     {
         return $this->urlGenerator->generate('app_login');
