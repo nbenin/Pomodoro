@@ -3,36 +3,20 @@
 namespace App\Controller;
 
 use App\Entity\User;
-<<<<<<< HEAD
 use App\Form\ResetPasswordType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-=======
 use App\Form\PasswordResetType;
 use App\Form\RegistrationFormType;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
->>>>>>> master
 
 class ResetPasswordController extends AbstractController
 {
     /**
-<<<<<<< HEAD
-     * @Route("/reset", name="reset")
-     */
-    public function index()
-    {
-        return $this->render('set_password/reset.html.twig', [
-            'controller_name' => 'ResetPasswordController',
-        ]);
-    }
-}
-=======
      * @Route("reset", name="reset")
      * @param Request $request
      * @param UserPasswordEncoderInterface $passwordEncoder
@@ -44,7 +28,7 @@ class ResetPasswordController extends AbstractController
         $user = new User();
         // Get entered email for check
         $userEmail = $request->request->get('password_reset'){'email'};
-        
+
         $form = $this->createForm(PasswordResetType::class, $user);
         $form->handleRequest($request);
 
@@ -81,4 +65,3 @@ class ResetPasswordController extends AbstractController
         ]);
     }
 }
->>>>>>> master
