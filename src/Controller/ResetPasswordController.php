@@ -23,15 +23,18 @@ class ResetPasswordController extends AbstractController
      */
     public function reset(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
+        // similar to registration controller
         $user = new User();
+        // Get entered email for check
         $userEmail = $request->request->get('password_reset'){'email'};
+        
         $form = $this->createForm(PasswordResetType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted()) {
 
+            // If email in database, get it and update the password
             $userSelected = $this->getDoctrine()->getRepository(User::class)->findBy(['email' => $userEmail]);
-            var_dump($userSelected);
             if ($userSelected) {
                 $user = $userSelected[0];
                 // encode the plain password
