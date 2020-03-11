@@ -41,11 +41,7 @@ class CustomerController extends AbstractController
             $entityManager->persist($ticket);
             $entityManager->flush(); // deze code stuurt de gegevens vanuit het formulier door naar de database
 
-        // do anything else you need here, like send an email
-
-     public function showTickets() {
-         
-            }
+        // do anything else you need here, like send an email or whatever.
 
             return $this->redirectToRoute('customer');
     }

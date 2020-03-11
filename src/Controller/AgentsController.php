@@ -12,7 +12,7 @@ class AgentsController extends AbstractController
      */
     public function index()
     {
-        return $this->render('agents/customer.html.twig', [
+        return $this->render('agents/agent.html.twig', [
             'controller_name' => 'AgentsController',
         ]);
     }
