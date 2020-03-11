@@ -67,6 +67,11 @@ class User implements UserInterface
      */
     private $messages;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $repoenedtickets;
+
     public function __construct()
     {
         $this->tickets = new ArrayCollection();
@@ -255,6 +260,18 @@ class User implements UserInterface
                 $message->setUserid(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getRepoenedtickets(): ?int
+    {
+        return $this->repoenedtickets;
+    }
+
+    public function setRepoenedtickets(?int $repoenedtickets): self
+    {
+        $this->repoenedtickets = $repoenedtickets;
 
         return $this;
     }
