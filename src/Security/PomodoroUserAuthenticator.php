@@ -92,6 +92,7 @@ class PomodoroUserAuthenticator extends AbstractFormLoginAuthenticator implement
         if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
             return new RedirectResponse($targetPath);
         }
+
         // hier het pad nog invullen maar dat hangt af van het soort user, de role dus
         $user=$token->getUser()->getRoles();
         if($user[0]=='ROLE_USER'){
@@ -103,8 +104,11 @@ class PomodoroUserAuthenticator extends AbstractFormLoginAuthenticator implement
         } elseif($user[0]=='ROLE_AGENT_TWO'){
             return new RedirectResponse($this->urlGenerator->generate('agents'));
     }
-          //return new RedirectResponse($this->urlGenerator->generate('customer'));
-       // throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
+
+
+          return new RedirectResponse($this->urlGenerator->generate('login'));
+        // throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
+
     }
 
     protected function getLoginUrl()
