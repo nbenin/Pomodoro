@@ -7,7 +7,9 @@ use App\Form\PasswordResetType;
 use App\Form\RegistrationFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Config\Definition\Exception\Exception;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
@@ -15,6 +17,9 @@ class ResetPasswordController extends AbstractController
 {
     /**
      * @Route("reset", name="reset")
+     * @param Request $request
+     * @param UserPasswordEncoderInterface $passwordEncoder
+     * @return RedirectResponse|Response
      */
     public function reset(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
