@@ -12,7 +12,7 @@ class ManagerController extends AbstractController
      */
     public function index()
     {
-        return $this->render('manager/index.html.twig', [
+        return $this->render('manager/customer.html.twig', [
             'controller_name' => 'ManagerController',
         ]);
     }

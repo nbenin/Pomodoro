@@ -12,7 +12,7 @@ class ManagerToolsController extends AbstractController
      */
     public function index()
     {
-        return $this->render('manager_tools/index.html.twig', [
+        return $this->render('manager_tools/customer.html.twig', [
             'controller_name' => 'ManagerToolsController',
         ]);
     }

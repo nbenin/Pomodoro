@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CustomerController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+
+<p>Add your complaint here</p>
+        {{ form_start(ticketForm) }}
+        {{ form_row(ticketForm.title) }}
+        {{ form_row(ticketForm.content) }}
+        <button class="btn">Add</button>
+        {{ form_end(ticketForm) }}
+
+    <p>
+    <a href="{{ path('app_logout') }}">Logout</a>
+    </p>
+
+</div>
+{% endblock %}
