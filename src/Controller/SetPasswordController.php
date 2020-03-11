@@ -12,7 +12,7 @@ class SetPasswordController extends AbstractController
      */
     public function index()
     {
-        return $this->render('set_password/index.html.twig', [
+        return $this->render('set_password/customer.html.twig', [
             'controller_name' => 'SetPasswordController',
         ]);
     }
