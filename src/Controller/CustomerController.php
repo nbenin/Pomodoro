@@ -5,6 +5,7 @@ namespace App\Controller;
 use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\Ticket;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\PropertyInfo\Util\PhpDocTypeHelper;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Form\MakeTicketForUser;
@@ -19,6 +20,10 @@ class CustomerController extends AbstractController
      */
     public function addTicket(Request $request): Response // de functie wordt aangeroepen op het moment dat je die route doet //die request verwijst naar de post
     {
+        $session = new Session();
+        //$session->get('email');
+        var_dump($session);
+
         $ticket = new Ticket();
         $ticket->setTime(new DateTime());
 
@@ -26,7 +31,10 @@ class CustomerController extends AbstractController
         $form->handleRequest($request); // $request is the post
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->setStatus(1);
+            $ticket->setStatus(1);
+            $ticket->setPriority(1);
+
+
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($ticket);
