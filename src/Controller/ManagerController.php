@@ -18,7 +18,7 @@ class ManagerController extends AbstractController
         $session = new Session(); // to work with the sessions
         $email = $session->get('email');
         $user = $this->getDoctrine()->getRepository(User::class)->findBy(['email' => $email]);
-        //$user = $user[0];
+        $user = $user[0];
 
         if (isset($_POST['SHUTUPNEIL'])) {
             $alltickets = $this->getDoctrine()->getRepository(Ticket::class)->findAll();
