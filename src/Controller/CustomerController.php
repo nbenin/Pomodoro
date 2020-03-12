@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\LoggerFunc;
 use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\Ticket;
@@ -14,6 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 
+
 class CustomerController extends AbstractController
 {
     /**
@@ -21,11 +23,11 @@ class CustomerController extends AbstractController
      */
     public function addTicket(Request $request): Response // de functie wordt aangeroepen op het moment dat je die route doet //die request verwijst naar de post
     {
+
         $session = new Session(); // to work with the sessions
         $email = $session->get('email');
         $user = $this->getDoctrine()->getRepository(User::class)->findBy(['email' => $email]);
         $user = $user[0];
-
         $ticket = new Ticket();
         $ticket->setTime(new DateTime());
 
