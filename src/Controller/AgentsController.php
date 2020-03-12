@@ -20,20 +20,19 @@ class AgentsController extends AbstractController
         $user = $this->getDoctrine()->getRepository(User::class)->findBy(['email' => $email]);
         $user = $user[0];
 
-        var_dump($_POST);
         if (isset( $_POST["claimed"])) {
             $ticket= $_POST["claimed"];
             $currentTicket = $this->getDoctrine()->getRepository(Ticket::class)->findBy(['id' =>$ticket]);
-$currentTicket= $currentTicket[0];
-$currentTicket->setAgentid($user);
+            $currentTicket= $currentTicket[0];
+            $currentTicket->setAgentid($user);
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($currentTicket);
             $entityManager->flush();
         }
 
-
-        $ticketInfo = $this->getDoctrine() ->getRepository(Ticket::class) ->findAll();
-        return $this->render('agents/agent.html.twig', ['allMadeTickets'=>$ticketInfo, 'agentName' => $user]);
+        $claimedTickets = $this->getDoctrine()->getRepository(Ticket::class) ->findBy(['agentid'=>$user->getId()]);
+        $Unclaimed = $this->getDoctrine() ->getRepository(Ticket::class) ->findBy(['agentid' => null]);
+        return $this->render('agents/agent.html.twig', ['allMadeTickets'=>$Unclaimed, 'agentName' => $user, 'clammed'=>$claimedTickets]);
     }
 }
