@@ -17,7 +17,7 @@
     </tr>
     {% for ticket in allTickets  %}
         <tr>
-            <td>{{ ticket.status }}</td>
+            <td><a href="/index.php/comment/{{ ticket.id }}">{{ ticket.status }}</a></td>
             <td>{{ ticket.title }}</td>
             <td>{{ ticket.time|date("m-d H:i") }}</td>
         </tr>
