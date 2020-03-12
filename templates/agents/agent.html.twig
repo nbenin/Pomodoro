@@ -4,6 +4,7 @@
 
 {% block body %}
     <p>Agent Name : {{ agentName.firstname }} {{ agentName.lastname }}</p>
+    <h1> Unclaimed Tickets</h1>
     <table>
         <tr>
             <th>Priority</th>
@@ -22,7 +23,7 @@
             </tr>
         {% endfor %}
     </table>
-
+<h1>In Progress</h1>
     <table>
         <tr>
             <th>Priority></th>

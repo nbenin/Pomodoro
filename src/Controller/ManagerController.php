@@ -20,8 +20,26 @@ class ManagerController extends AbstractController
         $user = $this->getDoctrine()->getRepository(User::class)->findBy(['email' => $email]);
         $user = $user[0];
 
-            $ticketInfo = $this->getDoctrine() ->getRepository(Ticket::class) ->findAll();
-        return $this->render('manager/manager.html.twig', ['allMadeTickets'=>$ticketInfo, 'managerName' => $user ]);
+        if (isset($_POST['SHUTUPNEIL'])) {
+            $alltickets = $this->getDoctrine()->getRepository(Ticket::class)->findAll();
+            foreach ($alltickets as $tickets)
+            {
+                if ($tickets->getAgentId()!== null) {
+                    $agent = $tickets->setAgentid(null);
+
+                    var_dump($agent);
+                    /*$empty = $this->getDoctrine()->getManager();
+                    $empty->persist($tickets);
+                    $empty->flush();*/
+                }
+            }
+
+
+        }
+
+        $claimedTickets = $this->getDoctrine()->getRepository(Ticket::class) ->findByNotNull();
+            $ticketInfo = $this->getDoctrine() ->getRepository(Ticket::class) ->findBy(['agentid'=> null]);
+        return $this->render('manager/manager.html.twig', ['allMadeTickets'=>$ticketInfo, 'managerName' => $user, 'AssTickets' => $claimedTickets ]);
 
     }
 }
