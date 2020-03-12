@@ -18,19 +18,18 @@ class ManagerController extends AbstractController
         $session = new Session(); // to work with the sessions
         $email = $session->get('email');
         $user = $this->getDoctrine()->getRepository(User::class)->findBy(['email' => $email]);
-        $user = $user[0];
+        //$user = $user[0];
 
         if (isset($_POST['SHUTUPNEIL'])) {
             $alltickets = $this->getDoctrine()->getRepository(Ticket::class)->findAll();
             foreach ($alltickets as $tickets)
             {
-                if ($tickets->getAgentId()!== null) {
-                    $agent = $tickets->setAgentid(null);
+                if ($tickets->getAgentid()!== null) {
+                    $tickets->setAgentid(null);
 
-                    var_dump($agent);
-                    /*$empty = $this->getDoctrine()->getManager();
+                    $empty = $this->getDoctrine()->getManager();
                     $empty->persist($tickets);
-                    $empty->flush();*/
+                    $empty->flush();
                 }
             }
 
