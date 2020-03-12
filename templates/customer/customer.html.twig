@@ -9,6 +9,20 @@
 </style>
 
 <div class="example-wrapper">
+<table>
+    <tr>
+        <th>Status</th>
+        <th>Title</th>
+        <th>Made</th>
+    </tr>
+    {% for ticket in allTickets  %}
+        <tr>
+            <td>{{ ticket.status }}</td>
+            <td>{{ ticket.title }}</td>
+            <td>{{ ticket.time|date("m-d H:i") }}</td>
+        </tr>
+    {% endfor %}
+</table>
 
 <p>Add your complaint here</p>
         {{ form_start(ticketForm) }}

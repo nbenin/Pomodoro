@@ -22,7 +22,9 @@ class CustomerController extends AbstractController
     public function addTicket(Request $request): Response // de functie wordt aangeroepen op het moment dat je die route doet //die request verwijst naar de post
     {
         $session = new Session(); // to work with the sessions
-        $email=$session->get('email');
+        $email = $session->get('email');
+        $user = $this->getDoctrine()->getRepository(User::class)->findBy(['email' => $email]);
+        $user = $user[0];
 
         $ticket = new Ticket();
         $ticket->setTime(new DateTime());
@@ -33,18 +35,19 @@ class CustomerController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $ticket->setStatus(1);
             $ticket->setPriority(1);
-            $user=$this->getDoctrine()->getRepository(User::class)->findBy(['email'=> $email]);
-            $user=$user[0];
+
             $ticket->setCustomerid($user);
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($ticket);
             $entityManager->flush(); // deze code stuurt de gegevens vanuit het formulier door naar de database
 
-        // do anything else you need here, like send an email or whatever.
+            // do anything else you need here, like send an email or whatever.
+//DELETE IF IT DOES NOTHING
+            //return $this->redirectToRoute('customer');
+        }
 
-            return $this->redirectToRoute('customer');
-    }
-        return $this->render('customer/customer.html.twig', ['ticketForm' => $form->createView(),]);  // hoe ik aan die ticketform moet komen?]);
+        $ticketInfo = $this->getDoctrine() ->getRepository(Ticket::class) ->findBy(['customerid' => $user]);
+        return $this->render('customer/customer.html.twig', ['ticketForm' => $form->createView(), 'allTickets'=>$ticketInfo]);  // hoe ik aan die ticketform moet komen?]);
     }
 }
