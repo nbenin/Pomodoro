@@ -44,7 +44,7 @@ class CustomerController extends AbstractController
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($ticket);
-            $entityManager->flush(); 
+            $entityManager->flush();
         }
 
         $ticketInfo = $this->getDoctrine() ->getRepository(Ticket::class) ->findBy(['customerid' => $user]);
