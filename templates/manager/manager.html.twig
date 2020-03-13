@@ -16,7 +16,15 @@
         {% for ticket in allMadeTickets  %}
             <tr>
                 <td>{{ ticket.priority }}</td>
-                <td>{{ ticket.status }}</td>
+                {%  if  ticket.status == 2 %}
+                    <td>Waiting for customer</td>
+                {% endif %}
+                {%  if  ticket.status == 1 %}
+                    <td>Waiting for agent</td>
+                {% endif %}
+                {%  if  ticket.status == 3 %}
+                    <td>Ticket closed</td>
+                {% endif %}
                 <td>{{ ticket.title }}</td>
                 <td>{{ ticket.time|date("m-d H:i") }}</td>
                 <td><button><a href="/index.php/comment/{{ ticket.id }}">History</a></button></td>
@@ -36,7 +44,15 @@
     {% for ticket in AssTickets %}
     <tr>
         <td>{{ ticket.priority }}</td>
-        <td>{{ ticket.status }}</td>
+        {%  if  ticket.status == 2 %}
+            <td>Waiting for customer</td>
+        {% endif %}
+        {%  if  ticket.status == 1 %}
+            <td>Waiting for agent</td>
+        {% endif %}
+        {%  if  ticket.status == 3 %}
+            <td>Ticket closed</td>
+        {% endif %}
         <td>{{ ticket.title }}</td>
         <td>{{ ticket.time|date("m-d H:i") }}</td>
         <td><button><a href="/index.php/comment/{{ ticket.id }}">History</a></button></td>
