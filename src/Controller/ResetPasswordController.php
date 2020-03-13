@@ -35,9 +35,8 @@ class ResetPasswordController extends AbstractController
         if ($form->isSubmitted()) {
 
             // If email in database, get it and update the password
-            $userSelected = $this->getDoctrine()->getRepository(User::class)->findBy(['email' => $userEmail]);
+            $userSelected = $this->getDoctrine()->getRepository(User::class)->findOneBy(['email' => $userEmail]);
             if ($userSelected) {
-                $user = $userSelected[0];
                 // encode the plain password
                 $user->setPassword(
                     $passwordEncoder->encodePassword(
