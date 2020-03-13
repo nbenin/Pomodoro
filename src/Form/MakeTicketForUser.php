@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Ticket;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -16,7 +17,7 @@ class MakeTicketForUser extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('content',  TextType::class,[
+            ->add('content',  TextareaType::class,[
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Please enter some text',
