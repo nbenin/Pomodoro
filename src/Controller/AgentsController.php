@@ -21,8 +21,7 @@ class AgentsController extends AbstractController
 
         if (isset( $_POST["claimed"])) {
             $ticket= $_POST["claimed"];
-            $currentTicket = $this->getDoctrine()->getRepository(Ticket::class)->findBy(['id' =>$ticket]);
-            $currentTicket= $currentTicket[0];
+            $currentTicket = $this->getDoctrine()->getRepository(Ticket::class)->findOneBy(['id' =>$ticket]);
             $currentTicket->setAgentid($user);
 
             $entityManager = $this->getDoctrine()->getManager();

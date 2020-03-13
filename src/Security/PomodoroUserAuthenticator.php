@@ -96,8 +96,7 @@ class PomodoroUserAuthenticator extends AbstractFormLoginAuthenticator implement
 
         //set session
         $session=new Session();
-        $session->set('email', $token->getUser()->getEmail()); // still don't understand the TokenInterface $token
-        // hier het pad nog invullen maar dat hangt af van het soort user, de role dus
+        $session->set('email', $token->getUser()->getEmail());
 
         $user=$token->getUser()->getRoles();
         if($user[0]=='ROLE_USER'){
