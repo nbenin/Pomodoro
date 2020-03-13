@@ -1,5 +1,61 @@
 {% extends 'base.html.twig' %}
-
+{% block stylesheets %}
+    <style>
+        body{
+            padding-top: 20px;
+            padding-left:10%;
+        }
+        td{
+            border-top: 1px solid grey;
+            padding-left: 10px;
+        }
+        th{
+            padding-left: 10px;
+        }
+        tr{
+            padding:30px;
+        }
+        table{
+            width: 70%;
+            border:solid 1px gray;
+            margin-bottom: 30px;
+            padding-left:10px;
+        }
+        .button {
+            display: block;
+            width: 115px;
+            height: 35px;
+            background: #4E9CAF;
+            padding-left: 10px;
+            padding-right: 10px;
+            text-align: center;
+            border-radius: 2px;
+            color: white;
+            font-weight: bold;
+            line-height: 35px;
+        }.button:hover{
+             text-decoration: none;
+             color:black;
+         }
+        .button2 {
+            display: block;
+            width: 115px;
+            height: 35px;
+            background:gainsboro;
+            padding-left: 10px;
+            padding-right: 10px;
+            text-align: center;
+            border-radius: 2px;
+            color: gray;
+            font-weight: bold;
+            line-height: 35px;
+        }
+        .button2:hover{
+            text-decoration: none;
+            color:black;
+        }
+    </style>
+{% endblock %}
 {% block title %}Hello ManagerController!{% endblock %}
 
 {% block body %}
@@ -27,7 +83,7 @@
                 {% endif %}
                 <td>{{ ticket.title }}</td>
                 <td>{{ ticket.time|date("m-d H:i") }}</td>
-                <td><button><a href="/index.php/comment/{{ ticket.id }}">History</a></button></td>
+                <td><button><a class="button2" href="/index.php/comment/{{ ticket.id }}">History</a></button></td>
             </tr>
         {% endfor %}
     </table>
@@ -55,7 +111,7 @@
         {% endif %}
         <td>{{ ticket.title }}</td>
         <td>{{ ticket.time|date("m-d H:i") }}</td>
-        <td><button><a href="/index.php/comment/{{ ticket.id }}">History</a></button></td>
+        <td><button><a class="button2" href="/index.php/comment/{{ ticket.id }}">History</a></button></td>
         <td>{{ ticket.agentid.getFirstname() }} {{  ticket.agentid.getLastname() }}</td>
     </tr>
     {% endfor %}
@@ -63,17 +119,14 @@
 <form method="post">
 <button type="submit" name="SHUTUPNEIL">UNCLAIM ALL!</button>
 </form>
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+
 
 <div class="example-wrapper">
     <p>
-        <a href="{{ path('app_logout') }}">Logout</a>
+        <a class="button" style="float:right; margin-right: 25%;" href="{{ path('app_logout') }}">Logout</a>
     </p>
     <p>
-        <a href="{{ path('manager_tools') }}">Tools</a>
+        <a class="button2" href="{{ path('manager_tools') }}">Tools</a>
     </p>
 </div>
 {% endblock %}
