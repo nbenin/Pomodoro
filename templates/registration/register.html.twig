@@ -1,8 +1,21 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Register{% endblock %}
-{% block stylesheets %}{% endblock %}
+
+  {% block stylesheets %}
+      <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
+      <style>h1{
+              margin-left:30%;
+              margin-top:5%;
+          }
+          form{
+              margin-left:30%;
+              margin-top:1%;
+                        }
+      </style>
+  {% endblock %}
 {% block body %}
+    <div class="form-group mb-3">
     <h1>Register</h1>
 
     {{ form_start(registrationForm) }}
@@ -14,4 +27,5 @@
 
         <button class="btn">Register</button>
     {{ form_end(registrationForm) }}
+</div>
 {% endblock %}
