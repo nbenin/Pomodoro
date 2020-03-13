@@ -23,6 +23,17 @@
         {{ form_end(commentForm) }}
     </div>
     <p>
-        <a href="{{ path('customer') }}">Back to customer page</a>
+        {%  if  user.getRoles() == ["ROLE_MANAGER"] %}
+        <a href="{{ path('manager') }}">Back to manager page</a>
+        {% endif %}
+        {%  if  user.getRoles() == ["ROLE_AGENT_TWO"] %}
+            <a href="{{ path('agent') }}">Back to agent page</a>
+        {% endif %}
+        {%  if  user.getRoles() == ["ROLE_AGENT"] %}
+            <a href="{{ path('agent') }}">Back to agent page</a>
+        {% endif %}
+        {%  if  user.getRoles() == ["ROLE_USER"] %}
+            <a href="{{ path('customer') }}">Back to customer page</a>
+        {% endif %}
     </p>
 {% endblock %}

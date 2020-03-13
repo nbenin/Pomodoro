@@ -47,7 +47,7 @@ class CommentController extends AbstractController
         // Get all messages related to ticket and give to render
         $messageHistory = $this->getDoctrine()->getRepository(Message::class)->findBy(['ticketid' => $ticket]);
         return $this->render('comment/comment.html.twig', ["ticket" => $ticket, "messageHistory" => $messageHistory,
-            "commentForm" => $form->createView(),
+            "commentForm" => $form->createView(), 'user' => $userLogged
         ]);
     }
 }
