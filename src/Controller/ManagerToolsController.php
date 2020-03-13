@@ -25,9 +25,9 @@ class ManagerToolsController extends AbstractController
     {
         $user = new User();
         // Only added these two lines
-        $user->setRoles(['ROLE_AGENT']);
+        $user->setRoles(['ROLE_AGENT_TWO']);
         $user->setTime(new \DateTime());
-        // Only customers allowed to register, rest is done by manager
+        // Manager has to choose to make agent one or two
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
