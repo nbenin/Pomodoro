@@ -15,14 +15,30 @@
             <th>History</th>
         </tr>
         {% for ticket in allMadeTickets  %}
-            <tr>
-                <td>{{ ticket.priority }}</td>
-                <td>{{ ticket.status }}</td>
-                <td>{{ ticket.title }}</td>
-                <td>{{ ticket.time|date("m-d H:i") }}</td>
-                <td><form method="post"><button value="{{ ticket.id }}" name="claimed" type="submit">Claim</button></form></td>
-                <td><button><a href="/index.php/comment/{{ ticket.id }}">History</a></button></td>
-            </tr>
+            {%  if  agentName.getRoles() == ["ROLE_AGENT_TWO"] %}
+                {% if ticket.priority == 2 %}
+                    <tr>
+                        <td>{{ ticket.priority }}</td>
+                        <td>{{ ticket.status }}</td>
+                        <td>{{ ticket.title }}</td>
+                        <td>{{ ticket.time|date("m-d H:i") }}</td>
+                        <td><form method="post"><button value="{{ ticket.id }}" name="claimed" type="submit">Claim</button></form></td>
+                        <td><button><a href="/index.php/comment/{{ ticket.id }}">History</a></button></td>
+                    </tr>
+                {% endif %}
+            {% endif %}
+            {%  if  agentName.getRoles() == ["ROLE_AGENT"] %}
+                {% if ticket.priority == 1 %}
+                    <tr>
+                        <td>{{ ticket.priority }}</td>
+                        <td>{{ ticket.status }}</td>
+                        <td>{{ ticket.title }}</td>
+                        <td>{{ ticket.time|date("m-d H:i") }}</td>
+                        <td><form method="post"><button value="{{ ticket.id }}" name="claimed" type="submit">Claim</button></form></td>
+                        <td><button><a href="/index.php/comment/{{ ticket.id }}">History</a></button></td>
+                    </tr>
+                {% endif %}
+            {% endif %}
         {% endfor %}
     </table>
 <h1>In Progress</h1>
@@ -34,14 +50,30 @@
             <th>Made</th>
             <th>History</th>
         </tr>
-        {%  for ticket in clammed %}
-        <tr>
-            <td>{{ ticket.priority }}</td>
-            <td>{{ ticket.status }}</td>
-            <td>{{ ticket.title }}</td>
-            <td>{{ ticket.time|date("m-d H:i") }}</td>
-            <td><button><a href="/index.php/comment/{{ ticket.id }}">History</a></button></td>
-        </tr>
+        {%  for ticket in claimed %}
+            {%  if  agentName.getRoles() == ["ROLE_AGENT_TWO"] %}
+                {% if ticket.priority == 2 %}
+                    <tr>
+                        <td>{{ ticket.priority }}</td>
+                        <td>{{ ticket.status }}</td>
+                        <td>{{ ticket.title }}</td>
+                        <td>{{ ticket.time|date("m-d H:i") }}</td>
+                        <td><button><a href="/index.php/comment/{{ ticket.id }}">History</a></button></td>
+                    </tr>
+                {% endif %}
+            {% endif %}
+            {%  if  agentName.getRoles() == ["ROLE_AGENT"] %}
+                {% if ticket.priority == 1 %}
+                    <tr>
+                        <td>{{ ticket.priority }}</td>
+                        <td>{{ ticket.status }}</td>
+                        <td>{{ ticket.title }}</td>
+                        <td>{{ ticket.time|date("m-d H:i") }}</td>
+                        <td><button><a href="/index.php/comment/{{ ticket.id }}">History</a></button></td>
+                        <td><form method="post"><button value="{{ ticket.id }}" name="escalate" type="submit">Escalate</button></form></td>
+                    </tr>
+                {% endif %}
+            {% endif %}
         {% endfor %}
     </table>
 

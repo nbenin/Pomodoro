@@ -16,7 +16,9 @@ class ManagerController extends AbstractController
     public function index()
     {
         $session = new Session(); // to work with the sessions
-        $email = $session->get('email');
+        $email = $session->get('email');   $claimedTickets = $this->getDoctrine()->getRepository(Ticket::class) ->findBy(['agentid'=>$user->getId()]);
+        $Unclaimed = $this->getDoctrine() ->getRepository(Ticket::class) ->findBy(['agentid' => null]);
+        return $this->render('agents/agent.html.twig', ['allMadeTickets'=>$Unclaimed, 'agentName' => $user, 'claimed'=>$claimedTickets]);
         $user = $this->getDoctrine()->getRepository(User::class)->findOneBy(['email' => $email]);
 
         if (isset($_POST['SHUTUPNEIL'])) {
