@@ -17,8 +17,7 @@ class AgentsController extends AbstractController
     {
         $session = new Session(); // to work with the sessions
         $email = $session->get('email');
-        $user = $this->getDoctrine()->getRepository(User::class)->findBy(['email' => $email]);
-        $user = $user[0];
+        $user = $this->getDoctrine()->getRepository(User::class)->findOneBy(['email' => $email]);
 
         if (isset( $_POST["claimed"])) {
             $ticket= $_POST["claimed"];
