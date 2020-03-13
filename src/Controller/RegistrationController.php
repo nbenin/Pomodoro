@@ -19,7 +19,7 @@ class RegistrationController extends AbstractController
     {
         $user = new User();
         // Only added these two lines
-        $user->setRoles(['ROLE_MANAGER']);
+        $user->setRoles(['ROLE_USER']);
         $user->setTime(new \DateTime());
         // Only customers allowed to register, rest is done by manager
         $form = $this->createForm(RegistrationFormType::class, $user);

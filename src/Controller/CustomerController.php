@@ -26,8 +26,7 @@ class CustomerController extends AbstractController
 
         $session = new Session(); // to work with the sessions
         $email = $session->get('email');
-        $user = $this->getDoctrine()->getRepository(User::class)->findBy(['email' => $email]);
-
+        $user = $this->getDoctrine()->getRepository(User::class)->findOneBy(['email' => $email]);
         $ticket = new Ticket();
         $ticket->setTime(new DateTime());
 

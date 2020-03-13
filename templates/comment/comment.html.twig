@@ -12,7 +12,14 @@
     <h1>Title: {{ ticket.getTitle() }}</h1>
     <p>Submitted by {{ ticket.getCustomerid().getFirstname() }} {{ ticket.getCustomerid().getLastname() }}, on {{ ticket.time|date("m-d H:i") }}</p>
     <p>{{ ticket.getContent }}</p>
-
-
 </div>
+    {% for message in messageHistory %}
+        <h4>By : {{ message.getUserid().getFirstname }} @ {{ message.time|date("m-d H:i") }}</h4>
+        <p> - {{ message.getContent() }}</p>
+    {% endfor %}
+    <div>
+        {{ form_start(commentForm) }}
+        <button type="submit" class="btn">Add</button>
+        {{ form_end(commentForm) }}
+    </div>
 {% endblock %}
