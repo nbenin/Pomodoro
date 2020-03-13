@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Ticket;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 
 class CommentController extends AbstractController
@@ -16,8 +17,7 @@ class CommentController extends AbstractController
      */
     public function index(Ticket $ticket)
     {
-        var_dump($ticket);
-        return $this->render('comment/index.html.twig', [
+        return $this->render('comment/index.html.twig', ["ticket" => $ticket
         ]);
     }
 }
