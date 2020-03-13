@@ -55,13 +55,9 @@ class ManagerToolsController extends AbstractController
 
             // do anything else you need here, like send an email
         }
-        $role = array("ROLE_AGENT");
 
-        $agents = $this->getDoctrine()->getRepository(User::class)->findByRole();
+        $agents = $this->getDoctrine()->getRepository(User::class)->findAll();
         var_dump($agents);
-
-
-
         return $this->render('manager_tools/tools.html.twig', [
             'registrationForm' => $form->createView(), 'managerName' => $man, 'agents' => $agents,
         ]);

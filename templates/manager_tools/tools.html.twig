@@ -25,10 +25,19 @@
             <th>Level</th>
         </tr>
         {% for user in agents %}
+            {% if user.getRoles() == ['ROLE_AGENT'] %}
             <tr>
-                <td>{{ user.firstname }}</td>
-
+                <td>{{ user.firstname }} {{ user.lastname }}</td>
+                <td>Agent Line One</td>
             </tr>
+
+            {% endif %}
+            {% if user.getRoles() == ['ROLE_AGENT_TWO'] %}
+            <tr>
+                <td>{{ user.firstname }} {{ user.lastname }}</td>
+                <td>Agent Line Two</td>
+            </tr>
+            {% endif %}
         {% endfor %}
     </table>
 

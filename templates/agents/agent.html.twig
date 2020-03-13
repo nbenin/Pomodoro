@@ -1,7 +1,58 @@
 {% extends 'base.html.twig' %}
-
 {% block title %}Hello ManagerController!{% endblock %}
-
+ {% block stylesheets %}
+     <style>
+         body{
+             padding-top: 20px;
+             padding-left:10%;
+         }
+         td{
+             border-top: 1px solid grey;
+         }
+         tr{
+             padding:30px;
+         }
+         table{
+             width: 60%;
+             border:solid 1px gray;
+             margin-bottom: 30px;
+             padding-left:10px;
+         }
+         .button {
+             display: block;
+             width: 115px;
+             height: 35px;
+             background: #4E9CAF;
+             padding-left: 10px;
+             padding-right: 10px;
+             text-align: center;
+             border-radius: 2px;
+             color: white;
+             font-weight: bold;
+             line-height: 35px;
+         }.button:hover{
+             text-decoration: none;
+             color:black;
+                   }
+         .button2 {
+             display: block;
+             width: 115px;
+             height: 35px;
+             background:gainsboro;
+             padding-left: 10px;
+             padding-right: 10px;
+             text-align: center;
+             border-radius: 2px;
+             color: gray;
+             font-weight: bold;
+             line-height: 35px;
+         }
+         .button2:hover{
+             text-decoration: none;
+             color:black;
+         }
+     </style>
+ {% endblock %}
 {% block body %}
     <p>Agent Name : {{ agentName.firstname }} {{ agentName.lastname }}</p>
     <h1> Unclaimed Tickets</h1>
@@ -19,12 +70,22 @@
                 {% if ticket.priority == 2 %}
                     <tr>
                         <td>{{ ticket.priority }}</td>
-                        <td>{{ ticket.status }}</td>
+                    {%  if  ticket.status == 2 %}
+                        <td>Waiting for customer</td>
+                    {% endif %}
+                        {%  if  ticket.status == 1 %}
+                            <td>Waiting for agent</td>
+                        {% endif %}
+                        {%  if  ticket.status == 3 %}
+                            <td>Ticket closed</td>
+                        {% endif %}
                         <td>{{ ticket.title }}</td>
                         <td>{{ ticket.time|date("m-d H:i") }}</td>
-                        <td><form method="post"><button value="{{ ticket.id }}" name="claimed" type="submit">Claim</button></form></td>
-                        <td><button><a href="/index.php/comment/{{ ticket.id }}">History</a></button></td>
+
+                        <td><form method="post"><button class="button" value="{{ ticket.id }}" name="claimed" type="submit">Claim</button></form></td>
+                        <td><button><a class="button2" href="/index.php/comment/{{ ticket.id }}">History</a></button></td>
                         <td><form method="post"><button type="submit" name="closeTicket" value="{{ ticket.id }}">Close Ticket</button></form></td>
+
                     </tr>
                 {% endif %}
             {% endif %}
@@ -32,12 +93,22 @@
                 {% if ticket.priority == 1 %}
                     <tr>
                         <td>{{ ticket.priority }}</td>
-                        <td>{{ ticket.status }}</td>
+                        {%  if  ticket.status == 2 %}
+                            <td>Waiting for customer</td>
+                        {% endif %}
+                        {%  if  ticket.status == 1 %}
+                            <td>Waiting for agent</td>
+                        {% endif %}
+                        {%  if  ticket.status == 3 %}
+                            <td>Ticket closed</td>
+                        {% endif %}
                         <td>{{ ticket.title }}</td>
                         <td>{{ ticket.time|date("m-d H:i") }}</td>
-                        <td><form method="post"><button value="{{ ticket.id }}" name="claimed" type="submit">Claim</button></form></td>
-                        <td><button><a href="/index.php/comment/{{ ticket.id }}">History</a></button></td>
+
+                        <td><form method="post"><button class="button" value="{{ ticket.id }}" name="claimed" type="submit">Claim</button></form></td>
+                        <td><button><a class="button2" href="/index.php/comment/{{ ticket.id }}">History</a></button></td>
                         <td><form method="post"><button type="submit" name="closeTicket" value="{{ ticket.id }}">Close Ticket</button></form></td>
+
                     </tr>
                 {% endif %}
             {% endif %}
@@ -57,7 +128,15 @@
                 {% if ticket.priority == 2 %}
                     <tr>
                         <td>{{ ticket.priority }}</td>
-                        <td>{{ ticket.status }}</td>
+                        {%  if  ticket.status == 2 %}
+                            <td>Waiting for customer</td>
+                        {% endif %}
+                        {%  if  ticket.status == 1 %}
+                            <td>Waiting for agent</td>
+                        {% endif %}
+                        {%  if  ticket.status == 3 %}
+                            <td>Ticket closed</td>
+                        {% endif %}
                         <td>{{ ticket.title }}</td>
                         <td>{{ ticket.time|date("m-d H:i") }}</td>
                         <td><button><a href="/index.php/comment/{{ ticket.id }}">History</a></button></td>
@@ -69,24 +148,30 @@
                 {% if ticket.priority == 1 %}
                     <tr>
                         <td>{{ ticket.priority }}</td>
-                        <td>{{ ticket.status }}</td>
+                        {%  if  ticket.status == 2 %}
+                            <td>Waiting for customer</td>
+                        {% endif %}
+                        {%  if  ticket.status == 1 %}
+                            <td>Waiting for agent</td>
+                        {% endif %}
+                        {%  if  ticket.status == 3 %}
+                            <td>Ticket closed</td>
+                        {% endif %}
                         <td>{{ ticket.title }}</td>
                         <td>{{ ticket.time|date("m-d H:i") }}</td>
                         <td><button><a href="/index.php/comment/{{ ticket.id }}">History</a></button></td>
-                        <td><form method="post"><button value="{{ ticket.id }}" name="escalate" type="submit">Escalate</button></form></td>
+                        <td><form method="post"><button class="button" value="{{ ticket.id }}" name="escalate" type="submit">Escalate</button></form></td>
                         <td><form method="post"><button type="submit" name="closeTicket" value="{{ ticket.id }}">Close Ticket</button></form></td>
                     </tr>
                 {% endif %}
             {% endif %}
         {% endfor %}
     </table>
-
     <style>
         .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
         .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
     </style>
-
     <p>
-        <a href="{{ path('app_logout') }}">Logout</a>
+        <a class="button" href="{{ path('app_logout') }}">Logout</a>
     </p>
 {% endblock %}
