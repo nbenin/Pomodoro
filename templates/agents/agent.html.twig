@@ -1,7 +1,58 @@
 {% extends 'base.html.twig' %}
-
 {% block title %}Hello ManagerController!{% endblock %}
-
+ {% block stylesheets %}
+     <style>
+         body{
+             padding-top: 20px;
+             padding-left:10%;
+         }
+         td{
+             border-top: 1px solid grey;
+         }
+         tr{
+             padding:30px;
+         }
+         table{
+             width: 60%;
+             border:solid 1px gray;
+             margin-bottom: 30px;
+             padding-left:10px;
+         }
+         .button {
+             display: block;
+             width: 115px;
+             height: 35px;
+             background: #4E9CAF;
+             padding-left: 10px;
+             padding-right: 10px;
+             text-align: center;
+             border-radius: 2px;
+             color: white;
+             font-weight: bold;
+             line-height: 35px;
+         }.button:hover{
+             text-decoration: none;
+             color:black;
+                   }
+         .button2 {
+             display: block;
+             width: 115px;
+             height: 35px;
+             background:gainsboro;
+             padding-left: 10px;
+             padding-right: 10px;
+             text-align: center;
+             border-radius: 2px;
+             color: gray;
+             font-weight: bold;
+             line-height: 35px;
+         }
+         .button2:hover{
+             text-decoration: none;
+             color:black;
+         }
+     </style>
+ {% endblock %}
 {% block body %}
     <p>Agent Name : {{ agentName.firstname }} {{ agentName.lastname }}</p>
     <h1> Unclaimed Tickets</h1>
@@ -22,8 +73,8 @@
                         <td>{{ ticket.status }}</td>
                         <td>{{ ticket.title }}</td>
                         <td>{{ ticket.time|date("m-d H:i") }}</td>
-                        <td><form method="post"><button value="{{ ticket.id }}" name="claimed" type="submit">Claim</button></form></td>
-                        <td><button><a href="/index.php/comment/{{ ticket.id }}">History</a></button></td>
+                        <td><form method="post"><button class="button" value="{{ ticket.id }}" name="claimed" type="submit">Claim</button></form></td>
+                        <td><button><a class="button2" href="/index.php/comment/{{ ticket.id }}">History</a></button></td>
                     </tr>
                 {% endif %}
             {% endif %}
@@ -34,8 +85,8 @@
                         <td>{{ ticket.status }}</td>
                         <td>{{ ticket.title }}</td>
                         <td>{{ ticket.time|date("m-d H:i") }}</td>
-                        <td><form method="post"><button value="{{ ticket.id }}" name="claimed" type="submit">Claim</button></form></td>
-                        <td><button><a href="/index.php/comment/{{ ticket.id }}">History</a></button></td>
+                        <td><form method="post"><button class="button" value="{{ ticket.id }}" name="claimed" type="submit">Claim</button></form></td>
+                        <td><button><a class="button2" href="/index.php/comment/{{ ticket.id }}">History</a></button></td>
                     </tr>
                 {% endif %}
             {% endif %}
@@ -70,7 +121,7 @@
                         <td>{{ ticket.title }}</td>
                         <td>{{ ticket.time|date("m-d H:i") }}</td>
                         <td><button><a href="/index.php/comment/{{ ticket.id }}">History</a></button></td>
-                        <td><form method="post"><button value="{{ ticket.id }}" name="escalate" type="submit">Escalate</button></form></td>
+                        <td><form method="post"><button class="button" value="{{ ticket.id }}" name="escalate" type="submit">Escalate</button></form></td>
                     </tr>
                 {% endif %}
             {% endif %}
@@ -83,6 +134,6 @@
     </style>
 
     <p>
-        <a href="{{ path('app_logout') }}">Logout</a>
+        <a class="button" href="{{ path('app_logout') }}">Logout</a>
     </p>
 {% endblock %}
