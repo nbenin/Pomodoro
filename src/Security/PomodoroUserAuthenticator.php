@@ -105,9 +105,9 @@ class PomodoroUserAuthenticator extends AbstractFormLoginAuthenticator implement
         } elseif($user[0]=='ROLE_MANAGER'){
             return new RedirectResponse($this->urlGenerator->generate('manager'));
         } elseif($user[0]=='ROLE_AGENT'){
-            return new RedirectResponse($this->urlGenerator->generate('agents'));
+            return new RedirectResponse($this->urlGenerator->generate('agent'));
         } elseif($user[0]=='ROLE_AGENT_TWO'){
-            return new RedirectResponse($this->urlGenerator->generate('agents'));
+            return new RedirectResponse($this->urlGenerator->generate('agent'));
     }
           return new RedirectResponse($this->urlGenerator->generate('login'));
         // throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
