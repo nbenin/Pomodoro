@@ -6,6 +6,7 @@ use App\Entity\Ticket;
 use App\Entity\Message;
 use App\Entity\User;
 use App\Form\CommentFormType;
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,6 +20,7 @@ class CommentController extends AbstractController
      * @param Ticket $ticket
      * @param Request $request
      * @return Response
+     * @throws Exception
      */
     public function index(Ticket $ticket, Request $request)
     {
@@ -29,7 +31,6 @@ class CommentController extends AbstractController
 
         // Create form for message input
         $message = new Message();
-
         $form = $this->createForm(CommentFormType::class, $message);
         $form->handleRequest($request);
 

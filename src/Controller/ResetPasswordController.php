@@ -54,7 +54,9 @@ class ResetPasswordController extends AbstractController
                 return $this->redirectToRoute('app_login');
             }
             else {
-                throw(new Exception('error Message'));
+                return $this->render('reset_password/reset.html.twig', [
+                    'resetPasswordForm' => $form->createView(),
+                ]);
             }
 
         }

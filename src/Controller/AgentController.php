@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 
-class AgentsController extends AbstractController
+class AgentController extends AbstractController
 {
     /**
      * @Route("/agent", name="agent")
