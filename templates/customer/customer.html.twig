@@ -20,6 +20,7 @@
             <td><a href="/index.php/comment/{{ ticket.id }}">{{ ticket.status }}</a></td>
             <td>{{ ticket.title }}</td>
             <td>{{ ticket.time|date("m-d H:i") }}</td>
+            <td><form><button>History</button></form></td>
         </tr>
     {% endfor %}
 </table>
