@@ -16,7 +16,23 @@
     <button name="one" class="btn">Register as Agent level 1</button>
     <button name="two" class="btn">Register as Agent level 2</button>
     {{ form_end(registrationForm) }}
-<style>
+
+    </table>
+    <h1>Agents</h1>
+    <table>
+        <tr>
+            <th>Agents</th>
+            <th>Level</th>
+        </tr>
+        {% for user in agents %}
+            <tr>
+                <td>{{ user.firstname }}</td>
+
+            </tr>
+        {% endfor %}
+    </table>
+
+    <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>

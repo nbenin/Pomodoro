@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Ticket;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+use Doctrine\ORM\Query\ResultSetMapping;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -53,9 +55,15 @@ class ManagerToolsController extends AbstractController
 
             // do anything else you need here, like send an email
         }
+        $role = array("ROLE_AGENT");
+
+        $agents = $this->getDoctrine()->getRepository(User::class)->findByRole();
+        var_dump($agents);
+
+
 
         return $this->render('manager_tools/tools.html.twig', [
-            'registrationForm' => $form->createView(), 'managerName' => $man,
+            'registrationForm' => $form->createView(), 'managerName' => $man, 'agents' => $agents,
         ]);
     }
 }
