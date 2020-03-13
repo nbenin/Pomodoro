@@ -43,7 +43,7 @@ class AgentController extends AbstractController
         if (isset($_POST['closeTicket'])) {
             $ticket= $_POST["closeTicket"];
             $currentTicket = $this->getDoctrine()->getRepository(Ticket::class)->findOneBy(['id' =>$ticket]);
-            $currentTicket->setStatus(2);
+            $currentTicket->setStatus(3);
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($currentTicket);
