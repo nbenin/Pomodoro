@@ -40,6 +40,16 @@ class AgentController extends AbstractController
             $entityManager->flush();
         }
 
+        if (isset($_POST['closeTicket'])) {
+            $ticket= $_POST["closeTicket"];
+            $currentTicket = $this->getDoctrine()->getRepository(Ticket::class)->findOneBy(['id' =>$ticket]);
+            $currentTicket->setStatus(2);
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($currentTicket);
+            $entityManager->flush();
+        }
+
         $claimedTickets = $this->getDoctrine()->getRepository(Ticket::class) ->findBy(['agentid'=>$user->getId()]);
         $Unclaimed = $this->getDoctrine() ->getRepository(Ticket::class) ->findBy(['agentid' => null]);
         return $this->render('agents/agent.html.twig', ['allMadeTickets'=>$Unclaimed, 'agentName' => $user, 'claimed'=>$claimedTickets]);

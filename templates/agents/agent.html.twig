@@ -24,6 +24,7 @@
                         <td>{{ ticket.time|date("m-d H:i") }}</td>
                         <td><form method="post"><button value="{{ ticket.id }}" name="claimed" type="submit">Claim</button></form></td>
                         <td><button><a href="/index.php/comment/{{ ticket.id }}">History</a></button></td>
+                        <td><form method="post"><button type="submit" name="closeTicket" value="{{ ticket.id }}">Close Ticket</button></form></td>
                     </tr>
                 {% endif %}
             {% endif %}
@@ -36,6 +37,7 @@
                         <td>{{ ticket.time|date("m-d H:i") }}</td>
                         <td><form method="post"><button value="{{ ticket.id }}" name="claimed" type="submit">Claim</button></form></td>
                         <td><button><a href="/index.php/comment/{{ ticket.id }}">History</a></button></td>
+                        <td><form method="post"><button type="submit" name="closeTicket" value="{{ ticket.id }}">Close Ticket</button></form></td>
                     </tr>
                 {% endif %}
             {% endif %}
@@ -59,6 +61,7 @@
                         <td>{{ ticket.title }}</td>
                         <td>{{ ticket.time|date("m-d H:i") }}</td>
                         <td><button><a href="/index.php/comment/{{ ticket.id }}">History</a></button></td>
+                        <td><form method="post"><button type="submit" name="closeTicket" value="{{ ticket.id }}">Close Ticket</button></form></td>
                     </tr>
                 {% endif %}
             {% endif %}
@@ -71,6 +74,7 @@
                         <td>{{ ticket.time|date("m-d H:i") }}</td>
                         <td><button><a href="/index.php/comment/{{ ticket.id }}">History</a></button></td>
                         <td><form method="post"><button value="{{ ticket.id }}" name="escalate" type="submit">Escalate</button></form></td>
+                        <td><form method="post"><button type="submit" name="closeTicket" value="{{ ticket.id }}">Close Ticket</button></form></td>
                     </tr>
                 {% endif %}
             {% endif %}
