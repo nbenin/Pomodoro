@@ -1,20 +1,48 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ManagerToolsController!{% endblock %}
-
+{% block title %}Register{% endblock %}
+{% block stylesheets %}{% endblock %}
 {% block body %}
-<style>
+    <p>Manager Name : {{ managerName.firstname }} {{ managerName.lastname }}</p>
+    <h1>Register agent</h1>
+
+    {{ form_start(registrationForm) }}
+    {{ form_row(registrationForm.firstname) }}
+    {{ form_row(registrationForm.lastname) }}
+    {{ form_row(registrationForm.email) }}
+    {{ form_row(registrationForm.password) }}
+    {{ form_row(registrationForm.question) }}
+
+    <button name="one" class="btn">Register as Agent level 1</button>
+    <button name="two" class="btn">Register as Agent level 2</button>
+    {{ form_end(registrationForm) }}
+
+    </table>
+    <h1>Agents</h1>
+    <table>
+        <tr>
+            <th>Agents</th>
+            <th>Level</th>
+        </tr>
+        {% for user in agents %}
+            <tr>
+                <td>{{ user.firstname }}</td>
+
+            </tr>
+        {% endfor %}
+    </table>
+
+    <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/var/www/becode/Pomodoro/src/Controller/ManagerToolsController.php'|file_link(0) }}">src/Controller/ManagerToolsController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/var/www/becode/Pomodoro/templates/manager_tools/customer.html.twig'|file_link(0) }}">templates/manager_tools/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <div class="example-wrapper">
+        <p>
+            <a href="{{ path('app_logout') }}">Logout</a>
+        </p>
+        <p>
+            <a href="{{ path('manager') }}">Manager Main Page</a>
+        </p>
+    </div>
 {% endblock %}
