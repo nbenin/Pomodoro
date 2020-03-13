@@ -12,6 +12,7 @@
             <th>Title</th>
             <th>Made</th>
             <th>Claim</th>
+            <th>History</th>
         </tr>
         {% for ticket in allMadeTickets  %}
             <tr>
@@ -20,16 +21,18 @@
                 <td>{{ ticket.title }}</td>
                 <td>{{ ticket.time|date("m-d H:i") }}</td>
                 <td><form method="post"><button value="{{ ticket.id }}" name="claimed" type="submit">Claim</button></form></td>
+                <td><form><button>History</button></form></td>
             </tr>
         {% endfor %}
     </table>
 <h1>In Progress</h1>
     <table>
         <tr>
-            <th>Priority></th>
+            <th>Priority</th>
             <th>Status</th>
             <th>Title</th>
             <th>Made</th>
+            <th>History</th>
         </tr>
         {%  for ticket in clammed %}
         <tr>
@@ -37,6 +40,7 @@
             <td>{{ ticket.status }}</td>
             <td>{{ ticket.title }}</td>
             <td>{{ ticket.time|date("m-d H:i") }}</td>
+            <td><form><button>History</button></form></td>
         </tr>
         {% endfor %}
     </table>

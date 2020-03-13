@@ -3,6 +3,7 @@
 {% block title %}Hello ManagerController!{% endblock %}
 
 {% block body %}
+    <p>Manager Name : {{ managerName.firstname }} {{ managerName.lastname }}</p>
 <h1> Unclaimed Tickets</h1>
     <table>
         <tr>
@@ -10,6 +11,7 @@
             <th>Status</th>
             <th>Title</th>
             <th>Made</th>
+            <th>History</th>
         </tr>
         {% for ticket in allMadeTickets  %}
             <tr>
@@ -17,6 +19,7 @@
                 <td>{{ ticket.status }}</td>
                 <td>{{ ticket.title }}</td>
                 <td>{{ ticket.time|date("m-d H:i") }}</td>
+                <td><form><button>History</button></form></td>
             </tr>
         {% endfor %}
     </table>
@@ -27,6 +30,7 @@
         <th>Status</th>
         <th>Title</th>
         <th>Made</th>
+        <th>History</th>
         <th>Agent Assigned</th>
     </tr>
     {% for ticket in AssTickets %}
@@ -35,6 +39,7 @@
         <td>{{ ticket.status }}</td>
         <td>{{ ticket.title }}</td>
         <td>{{ ticket.time|date("m-d H:i") }}</td>
+        <td><form><button>History</button></form></td>
         <td>{{ ticket.agentid.getFirstname() }} {{  ticket.agentid.getLastname() }}</td>
     </tr>
     {% endfor %}
@@ -48,4 +53,8 @@
 </style>
 
 <div class="example-wrapper">
+    <p>
+        <a href="{{ path('app_logout') }}">Logout</a>
+    </p>
+</div>
 {% endblock %}

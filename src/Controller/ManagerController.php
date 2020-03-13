@@ -24,13 +24,12 @@ class ManagerController extends AbstractController
             $alltickets = $this->getDoctrine()->getRepository(Ticket::class)->findAll();
             foreach ($alltickets as $tickets)
             {
-                if ($tickets->getAgentId()!== null) {
-                    $agent = $tickets->setAgentid(null);
+                if ($tickets->getAgentid()!== null) {
+                    $tickets->setAgentid(null);
 
-                    var_dump($agent);
-                    /*$empty = $this->getDoctrine()->getManager();
+                    $empty = $this->getDoctrine()->getManager();
                     $empty->persist($tickets);
-                    $empty->flush();*/
+                    $empty->flush();
                 }
             }
 
