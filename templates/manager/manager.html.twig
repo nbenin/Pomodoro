@@ -19,7 +19,7 @@
                 <td>{{ ticket.status }}</td>
                 <td>{{ ticket.title }}</td>
                 <td>{{ ticket.time|date("m-d H:i") }}</td>
-                <td><form><button>History</button></form></td>
+                <td><button><a href="/index.php/comment/{{ ticket.id }}">History</a></button></td>
             </tr>
         {% endfor %}
     </table>
@@ -39,13 +39,13 @@
         <td>{{ ticket.status }}</td>
         <td>{{ ticket.title }}</td>
         <td>{{ ticket.time|date("m-d H:i") }}</td>
-        <td><form><button>History</button></form></td>
+        <td><button><a href="/index.php/comment/{{ ticket.id }}">History</a></button></td>
         <td>{{ ticket.agentid.getFirstname() }} {{  ticket.agentid.getLastname() }}</td>
     </tr>
     {% endfor %}
 </table>
 <form method="post">
-<button type="submit" name="SHUTUPNEIL">Unclaim!</button>
+<button type="submit" name="SHUTUPNEIL">UNCLAIM ALL!</button>
 </form>
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }

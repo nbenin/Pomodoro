@@ -17,7 +17,7 @@ class CommentController extends AbstractController
      */
     public function index(Ticket $ticket)
     {
-        return $this->render('comment/index.html.twig', ["ticket" => $ticket
+        return $this->render('comment/comment.html.twig', ["ticket" => $ticket
         ]);
     }
 }
