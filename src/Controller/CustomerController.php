@@ -20,8 +20,11 @@ class CustomerController extends AbstractController
 {
     /**
      * @Route("/customer", name="customer")
+     * @param Request $request
+     * @return Response
+     * @throws \Exception
      */
-    public function addTicket(Request $request): Response // de functie wordt aangeroepen op het moment dat je die route doet //die request verwijst naar de post
+    public function addTicket(Request $request) : Response
     {
 
         $session = new Session(); // to work with the sessions
@@ -41,11 +44,7 @@ class CustomerController extends AbstractController
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($ticket);
-            $entityManager->flush(); // deze code stuurt de gegevens vanuit het formulier door naar de database
-
-            // do anything else you need here, like send an email or whatever.
-//DELETE IF IT DOES NOTHING
-            //return $this->redirectToRoute('customer');
+            $entityManager->flush();
         }
 
         $ticketInfo = $this->getDoctrine() ->getRepository(Ticket::class) ->findBy(['customerid' => $user]);
