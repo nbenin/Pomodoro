@@ -1,20 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ManagerToolsController!{% endblock %}
-
+{% block title %}Register{% endblock %}
+{% block stylesheets %}{% endblock %}
 {% block body %}
+    <h1>Register agent</h1>
+
+    {{ form_start(registrationForm) }}
+    {{ form_row(registrationForm.firstname) }}
+    {{ form_row(registrationForm.lastname) }}
+    {{ form_row(registrationForm.email) }}
+    {{ form_row(registrationForm.password) }}
+    {{ form_row(registrationForm.question) }}
+
+    <button class="btn">Register</button>
+    {{ form_end(registrationForm) }}
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/var/www/becode/Pomodoro/src/Controller/ManagerToolsController.php'|file_link(0) }}">src/Controller/ManagerToolsController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/var/www/becode/Pomodoro/templates/manager_tools/customer.html.twig'|file_link(0) }}">templates/manager_tools/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <div class="example-wrapper">
+        <p>
+            <a href="{{ path('app_logout') }}">Logout</a>
+        </p>
+        <p>
+            <a href="{{ path('manager_tools') }}">Tools</a>
+        </p>
+    </div>
 {% endblock %}
