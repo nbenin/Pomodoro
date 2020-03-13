@@ -28,6 +28,9 @@
                 <td>{{ ticket.title }}</td>
                 <td>{{ ticket.time|date("m-d H:i") }}</td>
                 <td><button><a href="/index.php/comment/{{ ticket.id }}">History</a></button></td>
+                <td><button>High Priority</button></td>
+                <td><button>Medium Priority</button></td>
+                <td><button>Low Priority</button></td>
             </tr>
         {% endfor %}
     </table>
