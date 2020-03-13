@@ -264,12 +264,12 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getRepoenedtickets(): ?int
+    public function getReopenedtickets(): ?int
     {
         return $this->repoenedtickets;
     }
 
-    public function setRepoenedtickets(?int $repoenedtickets): self
+    public function setReopenedtickets(?int $repoenedtickets): self
     {
         $this->repoenedtickets = $repoenedtickets;
 
